@@ -1,0 +1,37 @@
+package JupiterRegistrationJavaBackend2;
+
+import JupiterRegistrationJavaBackend2.business.abstracts.UserService;
+import JupiterRegistrationJavaBackend2.business.concretes.UserManager;
+import JupiterRegistrationJavaBackend2.core.concretes.jFacebookUserManagerAdaptor;
+import JupiterRegistrationJavaBackend2.core.concretes.jGoogleUserManagerAdaptor;
+import JupiterRegistrationJavaBackend2.dataAccess.concretes.HibernateUserDao;
+import JupiterRegistrationJavaBackend2.entities.concretes.User;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+
+		UserService userservice = new UserManager(new HibernateUserDao());
+		UserService userservice2 = new UserManager(new jFacebookUserManagerAdaptor());
+		UserService userservice3 = new UserManager(new jGoogleUserManagerAdaptor());
+
+		User user = new User("seyit", "sarı", "seyitsarı@gmail.com", "seyit123", 42);
+
+		userservice.register(user);
+		System.out.println(" ");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println(" ");
+		userservice2.registerWithExternalFacebook(user);
+		System.out.println(" ");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println(" ");
+		userservice3.registerWithExternalGoogle(user);
+		System.out.println(" ");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println(" ");
+		userservice.login(user);
+
+	}
+
+}

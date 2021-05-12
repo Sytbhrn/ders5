@@ -1,0 +1,20 @@
+package JupiterRegistrationJavaBackend2.jFacebookUser;
+
+import JupiterRegistrationJavaBackend2.entities.concretes.User;
+
+public class jFacebookUserManager {
+	public void withFacebook(User user) {
+		if(user.getJupiterId()<100 && 0<=user.getJupiterId()) {
+			System.out.println("Facebook ile üye olabilmek için bir facebook hesabı seçiniz.");
+			System.out.println("Veriler İşleniyor Lütfen bekleyiniz... ");
+			System.out.println(" ");
+			System.out.println("İşlem başarıyla tamamlandı, devam edebilirsiniz.");
+
+		} else {
+			System.out.println("Geçersiz Id");
+			System.out.println("İşlem gerçekleştirilemiyor");
+		}
+
+	}
+
+}

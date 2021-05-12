@@ -1,0 +1,105 @@
+package JupiterRegistrationJavaBackend2.dataAccess.concretes;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import JupiterRegistrationJavaBackend2.dataAccess.abstracts.UserDao;
+import JupiterRegistrationJavaBackend2.entities.concretes.User;
+
+public class HibernateUserDao implements UserDao {
+
+	@Override
+	public void add(User user) {
+		if (user.getFirstName().length() < 2 || user.getLastName().length() < 2 || user.getPassword().length() < 6) {
+		} else {
+			System.out.println(
+					"kullanıcı " + " " + user.getFirstName() + " " + user.getLastName() + "Hibernate ile eklendi");
+		}
+
+	}
+
+	@Override
+	public void firstNameSet(User user) {
+		if (user.getFirstName().length() < 2) {
+			System.out.println("uyarı : en az iki karakter girilmelidir");
+		} else {
+			System.out.println("isim kullanılabilir" + user.getFirstName());
+		}
+
+	}
+
+	@Override
+	public void lastNameSet(User user) {
+		if (user.getFirstName().length() < 2) {
+			System.out.println("uyarı : en az iki karakter girilmelidir");
+		} else {
+			System.out.println("soyad kullanılabilir " + user.getLastName());
+		}
+
+	}
+
+	@Override
+	public void eMailSet(User user) {
+		Pattern pattern = Pattern.compile("@gmail.com");
+		Matcher matcher = pattern.matcher(user.geteMail());
+
+		int sayac = 0;
+		while (matcher.find()) {
+			sayac++;
+			if (sayac != 1 && user.geteMail() == user.geteMail()) {
+				System.out.println("uyarı : geçersiz e posta girişi");
+			} else if (sayac == 1) {
+				System.out.println("e posta kullanılabilir" + user.geteMail());
+			}
+
+		}
+
+	}
+
+	@Override
+	public void passwordSet(User user) {
+		if (user.getPassword().length() < 6) {
+			System.out.println("Uyarı : en az 6 karakter girilmelidir");
+		} else {
+			System.out.println("şifre kullanılabilir" + user.getPassword());
+		}
+
+	}
+
+	@Override
+	public void loginToSystem(User user) {
+		if (user.geteMail() == user.geteMail() && user.getPassword() == user.getPassword()) {
+
+		} else {
+			System.out.println("E-posta veya parola geçersiz, lütfen tekrar deneyin");
+		}
+
+	}
+
+	@Override
+	public void sendVerification(User user) {
+		Pattern pattern2 = Pattern.compile("@gmail.com");
+		Matcher matcher2 = pattern2.matcher(user.geteMail());
+
+		int sayac = 0;
+		while (matcher2.find()) {
+			if (user.getFirstName().length() < 2 || user.getLastName().length() < 2
+					|| user.getPassword().length() < 6) {
+				System.out.println("hata tespit edildi");
+
+			} else if (sayac != 1 && user.geteMail() == user.geteMail())
+
+			{
+				System.out.println("hata tespşt edildi");
+
+			} else {
+				System.out.println("E-postanıza doğrulama linki gönderildi.");
+				System.out.println("Üyeliğinizi tamamlamak için lütfen linke tıklayınız.");
+				System.out.println("Veriler İşleniyor Lütfen bekleyiniz... ");
+				System.out.println("İşlem başarıyla tamamlandı, devam etmek için giriş yapınız.");
+			}
+		}
+
+	}
+
+}

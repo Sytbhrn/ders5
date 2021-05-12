@@ -1,0 +1,20 @@
+package JupiterRegistrationJavaBackend2.jGoogleUser;
+
+import JupiterRegistrationJavaBackend2.entities.concretes.User;
+
+public class jGoogleUserManager {
+	public void withGoogle(User user) {
+	if (user.getJupiterId() <= 200 && 0 <= user.getJupiterId()) {
+
+		System.out.println("Google ile üye olabilmek için bir google hesabı seçiniz.");
+		System.out.println("Veriler İşleniyor Lütfen bekleyiniz... ");
+		System.out.println(" ");
+		System.out.println("İşlem başarıyla tamamlandı, devam edebilirsiniz.");
+
+	} else {
+		System.out.println("Geçersiz Id");
+		System.out.println("İşlem gerçekleştirilemiyor");
+	}
+
+}
+}

@@ -1,0 +1,8 @@
+package JupiterRegistrationJavaBackend2.core.abstracts;
+
+import JupiterRegistrationJavaBackend2.entities.concretes.User;
+
+public interface jFacebookUserService {
+	void signWithFacebook(User user);
+
+}

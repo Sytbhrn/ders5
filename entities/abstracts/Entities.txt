@@ -1,0 +1,5 @@
+package JupiterRegistrationJavaBackend2.entities.abstracts;
+
+public interface Entities {
+
+}
